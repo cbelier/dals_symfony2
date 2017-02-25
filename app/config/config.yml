@@ -41,8 +41,9 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
 
+# On déclare nos routes pour Ajax
 fos_js_routing:
-    routes_to_expose: [ deleteStarAjax, updateStarAjax, createStarAjax ]
+    routes_to_expose: [ deleteStarAjax, updateStarAjax, createStarAjax, deleteVideoAjax, updateVideoAjax ]
 
 # Doctrine Configuration
 doctrine:

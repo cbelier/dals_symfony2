@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 
-class VideoBackOfficeController extends Controller
+class VideosBackOfficeController extends Controller
 {
     /**
      * @Route("/backOffice/videos", name="videosBackOffice")
