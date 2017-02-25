@@ -1,0 +1,28 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+deleteStarAjax:
+    path: /backOffice/stars/supprimer
+    defaults: { _controller: AppBundle:StarsBackOffice:remove }
+
+updateStarAjax:
+    path: /backOffice/stars/update
+    defaults: { _controller: AppBundle:StarsBackOffice:update }
+
+createStarAjax:
+    path: /backOffice/stars/create
+    defaults: { _controller: AppBundle:StarsBackOffice:create }
+
+deleteVideoAjax:
+    path: /backOffice/videos/supprimer
+    defaults: { _controller: AppBundle:VideosBackOffice:remove }
+
+updateVideoAjax:
+    path: /backOffice/videos/update
+    defaults: { _controller: AppBundle:VideosBackOffice:update }
+
+
+# app/config/routing.yml
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

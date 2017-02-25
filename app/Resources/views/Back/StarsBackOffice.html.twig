@@ -1,0 +1,71 @@
+{% extends 'Back/LayoutBackOffice.html.twig' %}
+
+{% block insertionModulesBackOffice %}
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Les données</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                    <!-- /.panel-heading -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Les stars</div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="dataTables-example">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Options</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="tableBodyStar">
+                                        {% for star in stars %}
+                                            <tr class="inputStar ligne{{ star.id }}" >
+                                                <td>{{ star.id }}</td>
+                                                <td data-search="{{ star.lastNameCelebrity }}"><input type="text"   data-id="{{ star.id }}" data-type="lastName" value="{{ star.lastNameCelebrity |default('-')}}" readonly="true"></td>
+                                                <td data-search="{{ star.firstNameCelebrity }}"><input type="text"   data-id="{{ star.id }}" data-type="firstName" value="{{ star.firstNameCelebrity |default('-')}}" readonly="true"></td>
+                                                <td class="supprimerStar" data-id="{{ star.id }}"><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <input type="text" id="Appbundle_Celebrity_lastNameCelebrity" name="Appbundle_Celebrity[lastNameCelebrity]" required="required" placeholder="Donnez un nom" class="form-control">
+
+                                            </td>
+                                            <td>
+                                                <input type="text" id="Appbundle_Celebrity_firstNameCelebrity" name="Appbundle_Celebrity[firstNameCelebrity]" required="required" placeholder="Donnez un prenom" class="form-control">
+
+                                            </td>
+                                            <td><button class="btn btn-info btn-block btn-small insertionStar">Valider</button></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('dist/js/backoffice/star.js') }}"></script>
+
+{% endblock %}

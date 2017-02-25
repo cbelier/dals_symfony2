@@ -1,0 +1,254 @@
+{% extends 'base.html.twig' %}
+
+{% block insertionLayout %}
+
+	<! ========== HEADERWRAP ==================================================================================================== 
+	=============================================================================================================================>
+    <div id="headerwrap">
+    	<div class="container">
+			<div class="row centered">
+				<div class="col-lg-8 col-lg-offset-2 mt">
+					<h1 class="animation slideDown">Revivez la saison 7 de Danse avec les Stars !</h1>
+    				<p class="mt"><a class="btn btn-cta btn-lg iframe" href="{{ asset('dist/video/candidats-saison-7.mp4') }}">Voir la vidéo de présentation</a></p>
+				</div>			
+			</div><!-- /row -->
+    	</div><!-- /container -->
+    </div> <!-- /headerwrap -->
+
+
+	<! ========== BLOG POSTS ====================================================================================================
+	=============================================================================================================================>
+	<div class="container">
+
+		<div class="row mt centered ">
+			<div class="col-lg-4 col-lg-offset-4">
+				<h3>Les vidéos les plus populaires de DALS</h3>
+				<hr>
+			</div>
+		</div><!-- /row -->
+
+		<div class="row mt">
+		    {% for videoLesPlusLike in videoLesPlusLikes %}
+				<div class="col-lg-4 col-md-4 col-xs-12 desc">
+                    <video id="my-video" class="video-js" controls preload="auto" width="350" height="240"
+                           poster="{{ asset('dist/img/Cover-presentation-dasl7.png') }}" data-setup="{}">
+                        <source src="{{ asset('dist/video/') }}{{ videoLesPlusLike.nameVideo }}" type='video/mp4'>
+						<p class="vjs-no-js">
+							Pour voir cette video, vous devez activer Javascript et mettre votre navigateur à jour. Vous pouvez consulter le
+							<a href="http://videojs.com/html5-video-support/" target="_blank">Support HTML5 video</a>
+						</p>
+                    </video>
+                <p>{{ videoLesPlusLike.titleVideo }} - {{ videoLesPlusLike.likeVideo }} <i class="fa fa-heart-o"></i></p>
+            	</div> <!-- col-lg-4 -->
+			{% endfor %}
+		</div><!-- /row -->
+	</div><!-- /container -->
+
+
+
+	<! ========== PORTFOLIO SECTION ============================================================================================= 
+	=============================================================================================================================>    
+	<div class="container">
+		<div class="row mt centered ">
+			<div class="col-lg-4 col-lg-offset-4">
+				<h3>Our Latest Work</h3>
+				<hr>
+			</div>
+		</div><!-- /row -->
+		<div class="row mt centered">	
+			<div class="col-lg-4 desc">
+				<a class="b-link-fade b-animate-go" href="#"><img width="350" src="{{ asset('dist/img/portfolio/port01.jpg') }}" alt="" />
+					<div class="b-wrapper">
+					  	<h4 class="b-from-left b-animate b-delay03">Project 1</h4>
+					  	<p class="b-from-right b-animate b-delay03">View Details</p>
+					</div>
+				</a>
+				<p>APE - <i class="fa fa-heart-o"></i></p>
+			</div>
+			<div class="col-lg-4 desc">
+				<a class="b-link-fade b-animate-go" href="#"><img width="350" src="{{ asset('dist/img/portfolio/port02.jpg') }}" alt="" />
+					<div class="b-wrapper">
+					  	<h4 class="b-from-left b-animate b-delay03">Project 2</h4>
+					  	<p class="b-from-right b-animate b-delay03">View Details</p>
+					</div>
+				</a>
+				<p>RAIDERS - <i class="fa fa-heart-o"></i></p>
+			</div>
+			<div class="col-lg-4 desc">
+				<a class="b-link-fade b-animate-go" href="#"><img width="350" src="{{ asset('dist/img/portfolio/port03.jpg') }}" alt="" />
+					<div class="b-wrapper">
+					  	<h4 class="b-from-left b-animate b-delay03">Project 3</h4>
+					  	<p class="b-from-right b-animate b-delay03">View Details</p>
+					</div>
+				</a>
+				<p>VIKINGS - <i class="fa fa-heart-o"></i></p>
+			</div>
+		</div><!-- /row -->
+		<div class="row mt centered">	
+			<div class="col-lg-4 desc">
+				<a class="b-link-fade b-animate-go" href="#"><img width="350" src="{{ asset('dist/img/portfolio/port03.jpg') }}" alt="" />
+					<div class="b-wrapper">
+					  	<h4 class="b-from-left b-animate b-delay03">Project 4</h4>
+					  	<p class="b-from-right b-animate b-delay03">View Details</p>
+					</div>
+				</a>
+				<p>APE - <i class="fa fa-heart-o"></i></p>
+			</div>
+			<div class="col-lg-4 desc">
+				<a class="b-link-fade b-animate-go" href="#"><img width="350" src="{{ asset('dist/img/portfolio/port01.jpg') }}" alt="" />
+					<div class="b-wrapper">
+					  	<h4 class="b-from-left b-animate b-delay03">Project 5</h4>
+					  	<p class="b-from-right b-animate b-delay03">View Details</p>
+					</div>
+				</a>
+				<p>RAIDERS - <i class="fa fa-heart-o"></i></p>
+			</div>
+			<div class="col-lg-4 desc">
+				<a class="b-link-fade b-animate-go" href="#"><img width="350" src="{{ asset('dist/img/portfolio/port02.jpg') }}" alt="" />
+					<div class="b-wrapper">
+					  	<h4 class="b-from-left b-animate b-delay03">Project 6</h4>
+					  	<p class="b-from-right b-animate b-delay03">View Details</p>
+					</div>
+				</a>
+				<p>VIKINGS - <i class="fa fa-heart-o"></i></p>
+			</div>
+		</div><!-- /row -->
+
+		<div class="row mt centered">
+			<div class="col-lg-4 col-lg-offset-4">
+    			<button type="button" class="btn btn-theme btn-lg">VIEW OUR PORTFOLIO</button>
+			</div>
+		</div><!-- /row -->
+	</div><!-- /container -->
+
+    <! ========== CALL TO ACTION 1 ==============================================================================================
+    =============================================================================================================================>
+    <div id="cta01">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Vous avez manqué la saison 6 de danse avec les stars ?<br/>Il est temps de vous rattraper !</h2>
+                    <a type="button" href="{{ path('saisonPage', {id:6}) }}" class="btn btn-cta btn-lg">Voir l'édition précédente</a>
+                </div>
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </div><! --/cta01 -->
+    
+	<! ========== OUR TEAM ====================================================================================================== 
+	=============================================================================================================================>    
+	
+	<div id="white">
+		<div class="container">
+	    	<div class="row mt">
+	    		<div class="col-lg-4 col-lg-offset-4 centered">
+	    			<h3>Venez les découvrirs sur les réseaux sociaux</h3>
+	    			<hr>
+	    		</div>
+	    	</div><! --/row -->
+			
+			<div class="row">
+				<div class="col-lg-4 ">
+					<div class="members">
+					  <img src="http://www.cotequimper.fr/files/2014/04/Image-25.png" alt="">
+					  <div class="team-info">
+					    <div class="subhead">Chris</div>
+					    <h2 class="team-name">Ikonomova</h2>
+					    <p class="team-description"><i class="fa fa-facebook"></i><i class="fa fa-twitter"></i><i class="fa fa-dribbble"></i></p>
+					  </div>
+					</div>
+				</div><!-- /col-lg-4 -->
+				
+				<div class="col-lg-4 ">
+					<div class="members">
+					  <img src="http://www.francedimanche.fr/parole/wp-content/uploads/2016/08/MC-Pietragalla.png" alt="">
+					  <div class="team-info">
+					    <div class="subhead">Marie-Claude</div>
+					    <h2 class="team-name">Pietragalla</h2>
+					    <p class="team-description"><i class="fa fa-facebook"></i><i class="fa fa-twitter"></i><i class="fa fa-dribbble"></i></p>
+					  </div>
+					</div>
+				</div><!-- /col-lg-4 -->
+				
+				<div class="col-lg-4 ">
+					<div class="members">
+					  <img src="http://www.ldpeople.com/wp-content/uploads/2013/11/Chris-Marques-Shym-Danse-avec-les-stars-Lionel-Durel-DALS.png" alt="">
+					  <div class="team-info">
+					    <div class="subhead">Chris</div>
+					    <h2 class="team-name">Marques</h2>
+					    <p class="team-description"><i class="fa fa-facebook"></i><i class="fa fa-twitter"></i><i class="fa fa-dribbble"></i></p>
+					  </div>
+					</div>
+				</div><!-- /col-lg-4 -->
+
+			</div><! --/row -->	
+		</div><! --/container -->
+	</div><! --/white -->
+	
+	<! ========== BLACK SECTION ================================================================================================= 
+	=============================================================================================================================>    
+	<div id="black">
+		<div class="container pt">
+			<div class="row mt centered">
+				<div class="col-lg-3">
+					<p><i class="fa fa-instagram"></i></p>
+					<h1>21.337</h1>
+					<hr>
+					<h4>Photos</h4>
+				</div>
+
+				<div class="col-lg-3">
+					<p><i class="fa fa-music"></i></p>
+					<h1>374</h1>
+					<hr>
+					<h4>Danses</h4>
+				</div>
+
+				<div class="col-lg-3">
+					<p><i class="fa fa-twitter"></i></p>
+					<h1>200 k</h1>
+					<hr>
+					<h4>Tweets</h4>
+				</div>
+
+				<div class="col-lg-3">
+					<p><i class="fa fa-ticket"></i></p>
+					<h1>209 M</h1>
+					<hr>
+					<h4>Videos vues</h4>
+				</div>
+
+			</div><!-- /row -->
+		</div><!-- /container -->
+	</div><!-- /black -->
+
+
+
+
+	<! ========== CONTACT SECTION =============================================================================================== 
+	=============================================================================================================================>
+	<div id="grey">
+		<div class="container">
+	    	<div class="row mt">
+	    		<div class="col-lg-4 col-lg-offset-4 centered">
+	    			<h3>Contactez nous</h3>
+                    <p>Tu veux rejoindre notre équipe de développement web ou celle de la rédaction ?</p>
+                    <a class="btn btn-default btn-lg" href="{{ path('pageContact') }}">Inscris toi !</a>
+	    			<hr>
+	    		</div>
+	    	</div><!-- row -->
+		</div><!-- /container -->
+	</div><!-- /grey -->
+
+
+
+	
+	<! ========== CALL TO ACTION BAR =============================================================================================== 
+	=============================================================================================================================>    
+	<div id="cta-bar">
+		<div class="container">
+			<div class="row centered">
+				<a href="#"><h4>Vous êtes prêt pour la prochaine saison ?</h4></a>
+			</div>
+		</div><!-- /container -->
+	</div><!-- /cta-bar -->
+{% endblock %}

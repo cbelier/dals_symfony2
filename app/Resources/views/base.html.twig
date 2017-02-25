@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>DALS</title>
+    <!-- Responsive -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keyword" content="dals, danse avec les stars, danse, stars, star, danses, danses de salon, DALS">
+
+    <!-- Theme style -->
+    <link href="{{ asset('dist/css/hover_pack.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('dist/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('dist/css/colors/color-74c9be.css') }}" rel="stylesheet">    
+    <link href="{{ asset('dist/css/animations.css') }}" rel="stylesheet">
+    <link href="{{ asset('dist/css/font-awesome.min.css') }}" rel="stylesheet">
+	  <link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">
+
+    {#<link href="{{ asset('plugings/colorbox/colorbox.css') }}" rel="stylesheet">#}
+
+	<!-- Bootstrap core CSS -->
+	<link href="{{ asset('dist/css/bootstrap.css') }}" rel="stylesheet">
+
+    <!--<script type="text/javascript" src="{{ asset('plugins/colorbox/jquery.colorbox-min.js') }}"></script>-->
+
+
+    <!-- If you'd like to support IE8 -->
+	  <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
+	<!-- Add jQuery library -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+
+    
+    
+    <!-- JavaScripts needed at the beginning
+    ================================================== -->
+{#
+    <script type="text/javascript" src="http://alvarez.is/demo/marco/assets/js/twitterFetcher_v10_min.js"></script>
+#}
+    
+    
+    <!-- Main Jquery & Hover Effects. Should load first -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="{{ asset('dist/js/hover_pack.js') }}"></script>
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    {% block css %}
+    {% endblock %}
+
+  </head>
+
+  <body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	  <div class="container">
+		  <!-- Brand and toggle get grouped for better mobile display -->
+		  <div class="navbar-header">
+			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				  <span class="sr-only">Barre de navigation</span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" href="{{ path('homepage') }}">Danse avec les stars</a>
+		  </div>
+		  <!-- Collect the nav links, forms, and other content for toggling -->
+		  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			  <ul class="nav navbar-nav">
+				  <li class="dropdown">
+					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Saisons<span class="caret"></span></a>
+					  <ul class="dropdown-menu">
+                          {% for saison in saisons %}
+							  <li><a href="{{ path('saisonPage', {id:saison.id}) }}">{{ saison.nameSaison }}</a></li>
+                          {% endfor %}
+					  </ul>
+				  </li>
+				  <li>
+					  <a href="{{ path('starsPage')}}">Les stars</a>
+				  </li>
+				  <li class="dropdown">
+					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Danses<span class="caret"></span></a>
+					  <ul class="dropdown-menu">
+                          {% for danse in danses %}
+						  	<li><a href="{{ path('danse', {danseId:danse.nameDanse}) }}">{{ danse.nameDanse }}</a></li>
+						  {% endfor %}
+					  </ul>
+				  </li>
+			  </ul>
+		  </div>
+		  <!-- /.navbar-collapse -->
+	  </div>
+	  <!-- /.container -->
+  </nav>
+      
+    {% block insertionLayout %}
+
+    {% endblock %}      
+     
+      <! ========== FOOTER =======================================================================================================>    
+	
+	<div id="f">
+		<div class="container">
+			<div class="row">
+				<!-- ADDRESS -->
+				<div class="col-lg-3">
+					<h4>Nos bureau</h4>
+					<p>
+						Salle de bain<br/>
+						Dans un canapé<br/>
+						Dans un café ou un bar<br/>
+					</p>
+					<p>
+						<i class="fa fa-mobile"></i> 07 68 24 42 84<br/>
+						<i class="fa fa-envelope-o"></i> hello@yourdomain.com
+					</p>
+				</div><! --/col-lg-3 -->
+				
+				<!-- LATEST POSTS -->
+				<div class="col-lg-3">
+					<h4>Latest Posts</h4>
+					<p>
+                        <a href="{{ path('pageContact') }}" ><i class="fa fa-angle-right"></i> Contact<br/></a>
+						<a href="{{ path('backOffice') }}"><i class="fa fa-angle-right"></i> Espace Réservé<br/></a>
+                        <a href="#"><i class="fa fa-angle-right"></i> A full width post<br/></a>
+                        <a href="#"><i class="fa fa-angle-right"></i> We talk about something nice<br/></a>
+                        <a href="#"><i class="fa fa-angle-right"></i> Yet another single post<br/></a>
+					</p>
+				</div><!-- /col-lg-3 -->
+				
+				<!-- NEW PROJECT -->
+				<div class="col-lg-3">
+					<h4>New Project</h4>
+					<a href="#"><img class="img-responsive" src="{{ asset('dist/img/cover1.jpg')}}" alt="" /></a>
+				</div><!-- /col-lg-3 -->
+				
+				
+			</div><! --/row -->
+		</div><!-- /container -->
+	</div><!-- /f -->
+	
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('dist/js/retina.js') }}"></script>
+	<script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
+
+
+
+	<script type="text/javascript">
+
+
+		$(window).scroll(function() {
+			$('.si').each(function(){
+			var imagePos = $(this).offset().top;
+	
+			var topOfWindow = $(window).scrollTop();
+				if (imagePos < topOfWindow+400) {
+					$(this).addClass("slideUp");
+				}
+			});
+		});
+	</script>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+		  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		  crossorigin="anonymous"></script>
+
+  <script>
+      //notre recherche video par star en ajax
+      var search = $('input[type="search"]');
+      search.on('keyup', searchAjax);
+
+      //On initialise la variable donnée
+      var donnee = '';
+
+      function searchAjax(e) {
+          var value = $(this).val();
+
+          $.ajax({
+              url: '{{ path('starAjax') }}',
+              data: 'data=' + value,
+              dataType: 'json',
+              success: onSuccess
+          });
+
+		  //Si tout se passe bien, on va créer une listgroup
+          function onSuccess(data) {
+              donnee = '<div class="list-group listeDeStars">';
+
+              $.each(data, createHtml);//on boucle sur le tableau data
+
+              donnee += '</div>';
+
+
+              $('.listeDeStars').html(donnee);//On remplace la listes par une nouvelle qui contient les stars correspondantes
+
+
+              $('.ligne').on('click', function () {
+                  window.location.href = 'http://localhost:8888/dals_symfony/web/app_dev.php/fr/stars/'+ $(this).data('id');
+              });
+
+
+          }
+
+          function createHtml(index, value)
+          {
+              donnee += '<a href="'+ value.id +'" class="list-group-item list-group-item-action ligne'+ value.id +'">';
+
+              donnee += value.firstnameCelebrity + ' ' + value.lastnameCelebrity +'</a>';
+
+              $('.listeDeStars').html(donnee);
+
+
+
+          }
+      }
+  </script>
+
+
+  </body>
+</html>
+

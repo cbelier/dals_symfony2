@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block insertionLayout %}
+
+<div class="container">
+    <div class="row mt centered ">
+        <div class="col-lg-4 col-lg-offset-4">
+            <h3>{% if nomDeLaCategorie is defined %}{{ nomDeLaCategorie }}
+                {% elseif saisonChoisie is defined %}{{ saisonChoisie }}
+                {% endif %}
+            </h3>
+            <hr>
+        </div>
+    </div><!-- /row -->
+    <div class="row mt centered">
+        {% for danseSelonLaCategorie in lesDansesSelonLaCategorie %}
+            <div class="col-lg-4 col-md-4 col-xs-12 desc">
+                <video id="my-video" class="video-js" controls preload="auto" width="350" height="240"
+                       poster="{{ asset('dist/img/Cover-presentation-dasl7.png') }}" data-setup="{}">
+                    <source src="{{ asset('dist/video/') }}{{ danseSelonLaCategorie.nameVideo }}" type='video/mp4'>
+                    <p class="vjs-no-js">
+                        Pour voir cette video, vous devez activer Javascript et mettre votre navigateur à jour. Vous pouvez consulter le
+                        <a href="http://videojs.com/html5-video-support/" target="_blank">Support HTML5 video</a>
+                    </p>
+                </video>
+                <p>{{ danseSelonLaCategorie.titleVideo }} - {{ danseSelonLaCategorie.likeVideo }} <i class="fa fa-heart-o"></i></p>
+            </div> <!-- col-lg-4 -->
+            {% endfor %}
+    </div><!-- /row -->
+
+
+    <div class="row mt centered">
+        <div class="col-lg-4 col-lg-offset-4">
+            <button type="button" class="btn btn-theme btn-lg">VIEW OUR PORTFOLIO</button>
+        </div>
+    </div><!-- /row -->
+</div><!-- /container -->
+
+{% endblock %}

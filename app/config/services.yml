@@ -1,0 +1,45 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+#    app.services.mailerService:
+#        class: AppBundle\Services\MailerService
+#
+#    app.subscriber.kernel.events:
+#        class: AppBundle\Subscriber\KernelEventsSubscriber
+#        arguments: [ '@twig', '@session' ]
+#        tags:
+#            - { name: kernel.event_subscriber}
+
+    app.services.utils.string:
+        class: AppBundle\Services\Utils\StringService
+
+    app.services.upload:
+        class: AppBundle\Services\UploadService
+        arguments: ['@app.services.utils.string', '%upload_dir%']
+
+    app.services.deleteimg:
+        class: AppBundle\Services\DeleteImgService
+        arguments: ['%upload_dir%']
+
+    app.subscriber.kernel.events:
+        class: AppBundle\Subscriber\KernelEventsSubscriber
+        arguments: [ '@twig', '@session' ]
+        tags:
+            - { name: kernel.event_subscriber}
+
+    app.subscriber.signup.form:
+        class: AppBundle\Subscriber\SignUpFormSubscriber
+        tags:
+            - { name: kernel.event_subscriber}
+
+    app.listener.user:
+        class: AppBundle\Listener\UserListener
+        tags:
+            - { name: doctrine.orm.entity_listener }
+
