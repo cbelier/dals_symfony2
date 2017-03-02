@@ -36,10 +36,31 @@ class Celebrity
     private $lastnameCelebrity;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="age_celebrity")
+     */
+    private $ageCelebrity;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description_celebrity", type="string", length=255)
+     */
+    private $descriptionCelebrity;
+
+    /**
      * Many celebrity have Many Video.
      * @ORM\ManyToMany(targetEntity="Video", mappedBy="celebrity")
      */
     private $video;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="img_celebrity", type="string")
+     */
+    private $image;
 
 
     /**
@@ -139,5 +160,77 @@ class Celebrity
     public function getVideo()
     {
         return $this->video;
+    }
+
+    /**
+     * Set ageCelebrity
+     *
+     * @param string $ageCelebrity
+     *
+     * @return Celebrity
+     */
+    public function setAgeCelebrity($ageCelebrity)
+    {
+        $this->ageCelebrity = $ageCelebrity;
+
+        return $this;
+    }
+
+    /**
+     * Get ageCelebrity
+     *
+     * @return string
+     */
+    public function getAgeCelebrity()
+    {
+        return $this->ageCelebrity;
+    }
+
+    /**
+     * Set descriptionCelebrity
+     *
+     * @param string $descriptionCelebrity
+     *
+     * @return Celebrity
+     */
+    public function setDescriptionCelebrity($descriptionCelebrity)
+    {
+        $this->descriptionCelebrity = $descriptionCelebrity;
+
+        return $this;
+    }
+
+    /**
+     * Get descriptionCelebrity
+     *
+     * @return string
+     */
+    public function getDescriptionCelebrity()
+    {
+        return $this->descriptionCelebrity;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Celebrity
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

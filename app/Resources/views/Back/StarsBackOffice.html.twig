@@ -24,6 +24,9 @@
                                         <th>#</th>
                                         <th>Nom</th>
                                         <th>Prenom</th>
+                                        <th>Age</th>
+                                        <th>Description</th>
+                                        <th>Chemin</th>
                                         <th>Options</th>
                                     </tr>
                                     </thead>
@@ -33,6 +36,9 @@
                                                 <td>{{ star.id }}</td>
                                                 <td data-search="{{ star.lastNameCelebrity }}"><input type="text"   data-id="{{ star.id }}" data-type="lastName" value="{{ star.lastNameCelebrity |default('-')}}" readonly="true"></td>
                                                 <td data-search="{{ star.firstNameCelebrity }}"><input type="text"   data-id="{{ star.id }}" data-type="firstName" value="{{ star.firstNameCelebrity |default('-')}}" readonly="true"></td>
+                                                <td data-search="{{ star.ageCelebrity }}"><input type="number"   data-id="{{ star.id }}" data-type="age" value="{{ star.ageCelebrity |default('-')}}" readonly="true"></td>
+                                                <td data-search="{{ star.descriptionCelebrity }}"><input type="text"   data-id="{{ star.id }}" data-type="description" value="{{ star.descriptionCelebrity |default('-')}}" readonly="true"></td>
+                                                <td><input type="file"   data-id="{{ star.id }}" data-type="image" value="{{ star.imageCelebrity |default('-')}}" readonly="true"></td>
                                                 <td class="supprimerStar" data-id="{{ star.id }}"><i class="fa fa-trash-o" aria-hidden="true"></i></td>
                                             </tr>
                                         {% endfor %}
@@ -40,14 +46,11 @@
                                     <tfoot>
                                         <tr>
                                             <td></td>
-                                            <td>
-                                                <input type="text" id="Appbundle_Celebrity_lastNameCelebrity" name="Appbundle_Celebrity[lastNameCelebrity]" required="required" placeholder="Donnez un nom" class="form-control">
-
-                                            </td>
-                                            <td>
-                                                <input type="text" id="Appbundle_Celebrity_firstNameCelebrity" name="Appbundle_Celebrity[firstNameCelebrity]" required="required" placeholder="Donnez un prenom" class="form-control">
-
-                                            </td>
+                                            <td><input type="text" id="Appbundle_Celebrity_lastNameCelebrity" name="Appbundle_Celebrity[lastNameCelebrity]" required="required" placeholder="Donnez un nom" class="form-control"></td>
+                                            <td><input type="text" id="Appbundle_Celebrity_firstNameCelebrity" name="Appbundle_Celebrity[firstNameCelebrity]" required="required" placeholder="Donnez un prenom" class="form-control"></td>
+                                            <td><input type="number" id="Appbundle_Celebrity_ageCelebrity" name="Appbundle_Celebrity[ageCelebrity]" required="required" placeholder="Age" class="form-control"></td>
+                                            <td><input type="text" id="Appbundle_Celebrity_descriptionCelebrity" name="Appbundle_Celebrity[descriptionCelebrity]" required="required" placeholder="Description" class="form-control"></td>
+                                            <td><input type="text" id="Appbundle_Celebrity_imageCelebrity" name="Appbundle_Celebrity[imageCelebrity]" required="required" placeholder="Description" class="form-control"></td>
                                             <td><button class="btn btn-info btn-block btn-small insertionStar">Valider</button></td>
                                         </tr>
                                     </tfoot>

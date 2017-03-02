@@ -36,10 +36,31 @@ class Celebrity
     private $lastnameCelebrity;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="age_celebrity")
+     */
+    private $ageCelebrity;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description_celebrity", type="string", length=255)
+     */
+    private $descriptionCelebrity;
+
+    /**
      * Many celebrity have Many Video.
      * @ORM\ManyToMany(targetEntity="Video", mappedBy="celebrity")
      */
     private $video;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="img_celebrity", type="string")
+     */
+    private $image;
 
 
     /**

@@ -218,4 +218,3 @@ class Comment
         return $this->authorComment;
     }
 }
-

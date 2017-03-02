@@ -36,7 +36,6 @@ class Saison
      */
     private $nameSaison;
 
-
     /**
      * Get id
      *
@@ -72,4 +71,6 @@ class Saison
     {
         return $this->nameSaison;
     }
+
+
 }

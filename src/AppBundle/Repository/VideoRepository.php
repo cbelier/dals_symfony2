@@ -32,11 +32,12 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
         return $results;
     }
 
-    public function findVideoWithRelation(){
+    public function findVideoWithRelations(){
         $results = $this->createQueryBuilder('video')
-            ->select('video.id', 'video.titleVideo', 'video.nameVideo', 'video.likeVideo', 'saison.nameSaison', 'danse.nameDanse')
+            ->select('video.id', 'video.titleVideo', 'video.nameVideo', 'video.likeVideo', 'saison.nameSaison', 'danse.nameDanse', 'celebrity.firstnameCelebrity')
             ->join('video.danseId', 'danse')
             ->leftJoin('video.saison', 'saison')
+            ->leftJoin('video.celebrity', 'celebrity')
             ->getQuery()
             ->getResult();
         return $results;

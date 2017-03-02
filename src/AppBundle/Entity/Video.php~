@@ -11,6 +11,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="video")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\VideoRepository")
+ *
+ * @ORM\EntityListeners({"AppBundle\Listener\VideoListener"})
  */
 class Video
 {
@@ -45,10 +47,10 @@ class Video
     private $nameVideo;
 
     /**
-     * Many Videos ont une saison
+     * Plusieurs Videos ont une saison
      *
      * @var int
-     * @ORM\ManyToOne(targetEntity="Saison", inversedBy="video")
+     * @ORM\ManyToOne(targetEntity="Saison")
      * @ORM\JoinColumn(name="saison_id", referencedColumnName="id")
      */
     private $saison;
@@ -66,7 +68,6 @@ class Video
      * @ORM\JoinTable(name="video_celebrity")
      */
     private $celebrity;
-
 
 
     /**

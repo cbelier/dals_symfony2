@@ -5,7 +5,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Les Vidéos</h1>
+                <h1 class="page-header">Les Vidéos ATTENTION CE SERVICE EST EN COURS DE DEVELOPPEMENT  NE PAS L'UTILISER</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Les vidéos</div>
+                    <div class="panel-heading">Les vidéos </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="table-responsive">
@@ -31,57 +31,83 @@
                                 </tr>
                                 </thead>
                                 <tbody class="tableBodyVideo">
-                                {% for video in videos %}
+                                {#{% for video in videos %}
                                     <tr class="inputVideo ligne{{ video.id }}" >
                                         <td>{{ video.id }}</td>
                                         <td data-search="{{ video.nameDanse }}"><input type="text"   data-id="{{ video.id }}" data-type="nameDanse" value="{{ video.nameDanse |default('-')}}" readonly="true"></td>
                                         <td data-search="{{ video.titleVideo }}"><input type="text"   data-id="{{ video.id }}" data-type="titleVideo" value="{{ video.titleVideo |default('-')}}" readonly="true"></td>
                                         <td data-search="{{ video.nameVideo }}"><input type="text"   data-id="{{ video.id }}" data-type="nameVideo" value="{{ video.nameVideo |default('-')}}" readonly="true"></td>
-                                        <td data-search="{{ video.celebrity|default('-') }}"><input type="text"   data-id="{{ video.id }}" data-type="celebrity" value="{{ video.celebrity |default('-')}}" readonly="true"></td>
+                                        <td data-search="{{ video.firstnameCelebrity|default('-') }}"><input type="text"   data-id="{{ video.id }}" data-type="celebrity" value="{{ video.firstnameCelebrity |default('-')}}" readonly="true"></td>
                                         <td data-search="{{ video.likeVideo }}"><input type="number"   data-id="{{ video.id }}" data-type="likeVideo" value="{{ video.likeVideo |default('-')}}" readonly="true"></td>
                                         <td data-search="{{ video.nameSaison }}"><input type="text"   data-id="{{ video.id }}" data-type="nameSaison" value="{{ video.nameSaison |default('-')}}" readonly="true"></td>
                                         <td class="supprimerVideo" data-id="{{ video.id }}"><i class="fa fa-trash-o" aria-hidden="true"></i></td>
                                     </tr>
-                                {% endfor %}
+                                {% endfor %}#}
+
+                                <tr>
+                                    {{ form_start(formUpdateVideo) }}
+                                    <td></td>
+                                    <td>
+                                        {{ form_widget(formUpdateVideo.danseId) }}
+                                        {{ form_errors(formUpdateVideo.danseId) }}
+                                    </td>
+                                    <td>
+                                        {{ form_widget(formUpdateVideo.titleVideo) }}
+                                        {{ form_errors(formUpdateVideo.titleVideo) }}
+                                    </td>
+                                    <td>
+                                        {{ form_widget(formUpdateVideo.nameVideo) }}
+                                        {{ form_errors(formUpdateVideo.nameVideo) }}
+                                    </td>
+                                    <td>
+                                        {{ form_widget(formUpdateVideo.celebrity) }}
+                                        {{ form_errors(formUpdateVideo.celebrity) }}
+                                    </td>
+                                    <td>
+                                        {{ form_widget(formUpdateVideo.likeVideo) }}
+                                        {{ form_errors(formUpdateVideo.likeVideo) }}
+                                    </td>
+                                    <td>
+                                        {{ form_widget(formUpdateVideo.saison) }}
+                                        {{ form_errors(formUpdateVideo.saison) }}
+                                    </td>
+                                    <td></td>
+                                        {{ form_end(formUpdateVideo) }}   
+                                </tr>
+
 
 
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    {{ form_start(formVideo) }}
+                                    {{ form_start(formCreateVideo) }}
                                     <td></td>
                                     <td>
-                                        {{ form_label (formVideo.danseId) }}
-                                        {{ form_widget(formVideo.danseId) }}
-                                        {{ form_errors(formVideo.danseId) }}
+                                        {{ form_widget(formCreateVideo.danseId) }}
+                                        {{ form_errors(formCreateVideo.danseId) }}
                                     </td>
                                     <td>
-                                        {{ form_label (formVideo.titleVideo) }}
-                                        {{ form_widget(formVideo.titleVideo) }}
-                                        {{ form_errors(formVideo.titleVideo) }}
+                                        {{ form_widget(formCreateVideo.titleVideo) }}
+                                        {{ form_errors(formCreateVideo.titleVideo) }}
                                     </td>
                                     <td>
-                                        {{ form_label (formVideo.nameVideo) }}
-                                        {{ form_widget(formVideo.nameVideo) }}
-                                        {{ form_errors(formVideo.nameVideo) }}
+                                        {{ form_widget(formCreateVideo.nameVideo) }}
+                                        {{ form_errors(formCreateVideo.nameVideo) }}
                                     </td>
                                     <td>
-                                        {{ form_label (formVideo.celebrity) }}
-                                        {{ form_widget(formVideo.celebrity) }}
-                                        {{ form_errors(formVideo.celebrity) }}
+                                        {{ form_widget(formCreateVideo.celebrity) }}
+                                        {{ form_errors(formCreateVideo.celebrity) }}
                                     </td>
                                     <td>
-                                        {{ form_label (formVideo.likeVideo) }}
-                                        {{ form_widget(formVideo.likeVideo) }}
-                                        {{ form_errors(formVideo.likeVideo) }}
+                                        {{ form_widget(formCreateVideo.likeVideo) }}
+                                        {{ form_errors(formCreateVideo.likeVideo) }}
                                     </td>
                                     <td>
-                                        {{ form_label (formVideo.saison) }}
-                                        {{ form_widget(formVideo.saison) }}
-                                        {{ form_errors(formVideo.saison) }}
+                                        {{ form_widget(formCreateVideo.saison) }}
+                                        {{ form_errors(formCreateVideo.saison) }}
                                     </td>
                                     <td><input type="submit" class="btn btn-info btn-block btn-small" /></td>
-                                        {{ form_end(formVideo) }}   
+                                        {{ form_end(formCreateVideo) }}   
                                 </tr>
 
                                 </tfoot>

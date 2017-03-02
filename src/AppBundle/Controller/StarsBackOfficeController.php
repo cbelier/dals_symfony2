@@ -27,7 +27,7 @@ class StarsBackOfficeController extends Controller
         //On récupère toutes les danses
         $stars = $em->getRepository("AppBundle:Celebrity")->findAll();
         //On récupère toutes les vidéos
-        $videos = $em->getRepository("AppBundle:Video")->findVideoWithRelation();
+        $videos = $em->getRepository("AppBundle:Video")->findVideoWithRelations();
 
         //Ici on prépare l'entrée de nouvelles stars
         $star = new Celebrity();
@@ -46,10 +46,16 @@ class StarsBackOfficeController extends Controller
     {
         $firstName = $request->get("firstName");
         $lastName = $request->get("lastName");
+        $lastName = $request->get("age");
+        $lastName = $request->get("description");
+        $lastName = $request->get("image");
 
         $star = new Celebrity();
         $star->setFirstnameCelebrity($firstName);
         $star->setLastnameCelebrity($lastName);
+        $star->setAgeCelebrity($lastName);
+        $star->setDescriptionCelebrity($lastName);
+        $star->setImage($lastName);
 
         $em = $this->getDoctrine()->getManager();
         $em -> persist($star);//Doctrine est au courant des changements
@@ -84,18 +90,32 @@ class StarsBackOfficeController extends Controller
         $type = $request->get("type");
         $value = $request->get("value");
 
-        //die(dump("id: $id, type: $type, valeur: $value"));
 
         $em = $this->getDoctrine()->getManager();
         $star = new Celebrity();
         $star = $em->getRepository('AppBundle:Celebrity')->find($id);
 
-        if ($type == "firstName"){
-            $star->setFirstnameCelebrity($value);
+        switch ($type){
+            case "firstName":
+                $star->setFirstnameCelebrity($value);
+                break;
+
+            case "lastName":
+                $star->setLastnameCelebrity($value);
+                break;
+            case "age":
+                $star->setAgeCelebrity($value);
+                break;
+
+            case "description" :
+                $star->setDescriptionCelebrity($value);
+                break;
+
+            case "image" :
+                $star->setImage($value);
+                break;
         }
-        else{
-            $star->setLastnameCelebrity($value);
-        }
+
         $em -> persist($star);//Doctrine est au courant des changements
         $em -> flush();//On force
 

@@ -18,17 +18,16 @@ class UploadService
         $this->uploadDir = $uploadDir;
     }
 
-    public function upLoadService($image){
+    public function upload($image){
 
         //$servicesUtils = $this->get('admin.services.utils.string');
-        $imageName = $this->stringUtilService->generateUniqId();
+        $fileName = $this->stringUtilService->generateUniqId();
 
-        $file = $imageName.'.'.$image->guessExtension();
+        $file = $fileName.'.'.$image->guessExtension();
         $image->move($this->uploadDir, $file);
 
 
         return $file;
 
     }
-
 }

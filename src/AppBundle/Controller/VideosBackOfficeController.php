@@ -27,15 +27,19 @@ class VideosBackOfficeController extends Controller
         //On récupère toutes les danses
         $stars = $em->getRepository("AppBundle:Celebrity")->findAll();
         //On récupère toutes les vidéos
-        $videos = $em->getRepository("AppBundle:Video")->findVideoWithRelation();
+        $videos = $em->getRepository("AppBundle:Video")->find(1);
         //On récupère toutes les saisons pour le menu
         $saisons = $em->getRepository("AppBundle:Saison")->findAll();
 
         $videoObject = new Video();
-        $formVideo = $this->createForm(VideoType::class, $videoObject);
-        $formVideo->handleRequest($request);
+        $formCreateVideo = $this->createForm(VideoType::class, $videoObject);
+        $formCreateVideo->handleRequest($request);
 
-        if ($formVideo->isSubmitted() && $formVideo->isValid()) {
+        $formUpdateVideo = $this->createForm(VideoType::class, $videos);
+        $formUpdateVideo->handleRequest($request);
+
+
+        if ($formCreateVideo->isSubmitted() && $formCreateVideo->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
 
@@ -43,7 +47,15 @@ class VideosBackOfficeController extends Controller
             $em -> flush();//On force
             // sauvegarde du produit
 
-            $this->addFlash('success', 'Votre produit a bien été ajouté');
+            return $this->redirectToRoute('videosBackOffice');
+        }
+
+        if ($formUpdateVideo->isSubmitted() && $formUpdateVideo->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+
+            $em -> flush();//On flush juste car Doctrine à déjà la vidéo
+            // sauvegarde du produit
 
             return $this->redirectToRoute('videosBackOffice');
         }
@@ -54,7 +66,8 @@ class VideosBackOfficeController extends Controller
             'stars' => $stars,
             'videos' => $videos,
             'saisons' => $saisons,
-            'formVideo' => $formVideo->createView()
+            'formCreateVideo' => $formCreateVideo->createView(),
+            'formUpdateVideo' => $formUpdateVideo->createView()
         ]);
     }
 

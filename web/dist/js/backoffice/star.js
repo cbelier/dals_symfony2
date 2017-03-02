@@ -36,10 +36,16 @@ function ajoutStarAjax() {
     //On récupère les sélecteurs des inputs
     var lastNameSelector = $('#Appbundle_Celebrity_lastNameCelebrity');
     var firstNameSelector = $('#Appbundle_Celebrity_firstNameCelebrity');
+    var ageSelector = $('#Appbundle_Celebrity_ageCelebrity');
+    var descriptionSelector = $('#Appbundle_Celebrity_descriptionCelebrity');
+    var imageSelector = $('#Appbundle_Celebrity_imageCelebrity');
 
     //On attribut leur valeur
     var lastName = lastNameSelector.val();
     var firstName = firstNameSelector.val();
+    var age = ageSelector.val();
+    var description = descriptionSelector.val();
+    var image = imageSelector.val();
 
     lastNameSelector.val('');
     firstNameSelector.val('');
@@ -48,7 +54,11 @@ function ajoutStarAjax() {
         url: Routing.generate('createStarAjax'),
         data: {
             firstName: firstName,
-            lastName: lastName
+            lastName: lastName,
+            age: age,
+            description: description,
+            image: image
+
         },
         dataType: 'json',
         success: ajouterUneLigneDuTableauStar
@@ -107,10 +117,11 @@ function updateDeLaLigneDuTableauStar(id) {
 function ajouterUneLigneDuTableauStar(value) {
 
     tabStars = '<tr class="inputStar ligne' + value.id + '"><td>' + value.id + '</td>';
-
     tabStars += '<td data-search="' + value.lastnameCelebrity +'"><input type="text" data-id="' + value.id + '" data-type="lastName" value="' + value.lastnameCelebrity + '" readonly="true"></td>';
-
     tabStars += '<td data-search="' + value.firstnameCelebrity +'"><input type="text" data-id="' + value.id + '" data-type="firstName" value="' + value.firstnameCelebrity + '" readonly="true"></td>';
+    tabStars += '<td data-search="' + value.ageCelebrity +'"><input type="number" data-id="' + value.id + '" data-type="age" value="' + value.ageCelebrity + '" readonly="true"></td>';
+    tabStars += '<td data-search="' + value.descriptionCelebrity +'"><input type="text" data-id="' + value.id + '" data-type="description" value="' + value.descriptionCelebrity + '" readonly="true"></td>';
+    tabStars += '<td><input type="file" data-id="' + value.id + '" data-type="image" value="' + value.imageCelebrity + '" readonly="true"></td>';
 
     tabStars += '<td class="supprimerStar" data-id="' + value.id + '"><i class="fa fa-trash-o" aria-hidden="true"></i></td></tr>';
 

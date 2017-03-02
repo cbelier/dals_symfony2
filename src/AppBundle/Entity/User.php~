@@ -210,4 +210,35 @@ class User implements UserInterface, \Serializable
     {
         return $this->role;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->role = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add role
+     *
+     * @param \AppBundle\Entity\Role $role
+     *
+     * @return User
+     */
+    public function addRole(\AppBundle\Entity\Role $role)
+    {
+        $this->role[] = $role;
+
+        return $this;
+    }
+
+    /**
+     * Remove role
+     *
+     * @param \AppBundle\Entity\Role $role
+     */
+    public function removeRole(\AppBundle\Entity\Role $role)
+    {
+        $this->role->removeElement($role);
+    }
 }

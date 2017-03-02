@@ -38,8 +38,10 @@ services:
         tags:
             - { name: kernel.event_subscriber}
 
-    app.listener.user:
-        class: AppBundle\Listener\UserListener
+    app.listener.video:
+        class: AppBundle\Listener\VideoListener
+        arguments: ['@app.services.upload', '@app.services.deleteimg']
         tags:
             - { name: doctrine.orm.entity_listener }
+
 

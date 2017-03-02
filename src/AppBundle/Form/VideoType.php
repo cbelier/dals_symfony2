@@ -102,6 +102,6 @@ class VideoType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'adminbundle_user';
+        return 'appbundle_user';
     }
 }
